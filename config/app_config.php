@@ -4,7 +4,7 @@
 
 // --- 1. Environment and Base Settings ---
 define('APP_ENV', getenv('APP_ENV') ?: 'development'); // e.g., 'production', 'staging', 'development'
-define('APP_BASE_URL', getenv('APP_BASE_URL') ?: 'http://221030627.mukoya.com'); // http://localhost:8080/');
+define('APP_BASE_URL', getenv('APP_BASE_URL') ?: 'http:yor-domain.com'); // http://localhost:8080/');
 define('APP_NAME', 'Safe Transport System');
 define('APP_TIMEZONE', 'Africa/Lagos');
 date_default_timezone_set(APP_TIMEZONE);
@@ -16,12 +16,12 @@ define('LOG_FILE_PATH', __DIR__ . '/../logs/app.log');
 
 // --- 3. External API Keys (Load from ENV) ---
 // Key for Geocoding/Mapping services (e.g., Google Maps, OpenCage)
-define('MAPS_API_KEY', getenv('MAPS_API_KEY') ?: 'AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao'); 
+define('MAPS_API_KEY', getenv('MAPS_API_KEY') ?: 'API Key'); 
 // Key for external Email sending service (e.g., SendGrid, Mailgun)
 define('EMAIL_API_KEY', getenv('EMAIL_API_KEY') ?: '');
 
 // --- 4. Email Settings ---
-define('EMAIL_FROM_ADDRESS', 'no-reply@221030627.rf.gd');
+define('EMAIL_FROM_ADDRESS', 'no-reply@example.com');
 define('EMAIL_FROM_NAME', APP_NAME . ' Alerts');
 define('SMTP_HOST', getenv('SMTP_HOST') ?: 'smtp.example.com');
 define('SMTP_USER', getenv('SMTP_USER') ?: '');
@@ -42,4 +42,5 @@ return [
     'maps_key' => MAPS_API_KEY,
     'log_level' => LOG_LEVEL,
     'rate_limit' => ['reports' => API_RATE_LIMIT_REPORTS, 'time' => API_RATE_LIMIT_TIME]
+
 ];
