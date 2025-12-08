@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SAFER PUBLIC TRANSPORTATION IN INDIA | By Aminu Muhammed BCA-DBMS</title>
+    
+    <link rel="manifest" href="/manifest.json">
+
+    <style>
+        :root {
+            --color-primary: #2563eb;
+            --color-success: #16a34a;
+            --color-danger: #dc2626;
+            --color-text: #1f2937;
+            --color-bg: #f8fafc;
+        }
+        body { font-family: system-ui, sans-serif; margin: 0; background-color: var(--color-bg); color: var(--color-text); }
+        .container { max-width: 600px; margin: 0 auto; padding: 1.5rem; }
+        
+        /* Progress Indicator Styling */
+        .progress-steps { display: flex; justify-content: space-between; margin-bottom: 2rem; }
+        .step { 
+            flex-grow: 1; padding: 0.5rem 0; text-align: center; border-bottom: 4px solid #e5e7eb; 
+            color: #9ca3af; font-weight: 500; 
+        }
+        .step.active { border-color: var(--color-primary); color: var(--color-primary); }
+
+        /* Form Styling */
+        .form-step-content { min-height: 250px; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+        input[type="text"], input[type="number"], textarea, select {
+            width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 0.5rem; box-sizing: border-box;
+            font-size: 1rem;
+        }
+        .button-group { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
+        .btn {
+            padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; font-weight: bold; cursor: pointer;
+            flex-grow: 1; font-size: 1.125rem; /* Touch-friendly size */
+        }
+        .btn-primary { background-color: var(--color-primary); color: white; }
+        .btn-secondary { background-color: #e5e7eb; color: var(--color-text); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        
+        /* Anonymity Badge */
+        .anonymity-badge {
+            background-color: var(--color-success); color: white; padding: 0.75rem; border-radius: 0.5rem;
+            text-align: center; margin-bottom: 1.5rem; font-weight: bold;
+        }
+        
+        /* Severity/Type Selection Grids */
+        .selection-grid, .severity-options { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; 
+        }
+        .selection-item, .severity-item {
+            padding: 1rem; border: 2px solid #ccc; border-radius: 0.5rem; text-align: center;
+            cursor: pointer; transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        .selection-item:hover, .severity-item:hover { background-color: #f0f0f0; }
+        .selection-item.selected, .severity-item.selected {
+            border-color: var(--color-primary); background-color: #e0f2f1;
+        }
+        .severity-item[data-severity="Critical"].selected { border-color: var(--color-danger); background-color: #fee2e2; }
+
+        /* Confirmation/Error Styles */
+        #confirmation-screen, #error-message { text-align: center; padding: 3rem 1rem; }
+        #confirmation-screen h2 { color: var(--color-success); }
+    </style>
+</head>
+<body>
+    <header style="background-color: var(--color-primary); color: white; padding: 1rem 0;">
+        <div class="container">
+            <h1 style="font-size: 1.5rem; margin: 0;">Report Incident</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="anonymity-badge" role="status">
+            🔒 Your report is completely anonymous. Estimated time: <span aria-label="60 seconds">60s</span>.
+        </div>
+
+        <nav class="progress-steps" aria-label="Form Progress">
+            <div class="step active" data-step="1" aria-current="step">1. Type</div>
+            <div class="step" data-step="2">2. Location</div>
+            <div class="step" data-step="3">3. Details</div>
+            <div class="step" data-step="4">4. Review</div>
+        </nav>
+
+        <form id="incident-report-form" action="/api/submit-report.php" method="POST" autocomplete="off">
+            
+            <input type="hidden" name="_csrf_token" id="csrf-token" value="[CSRF_TOKEN_PLACEHOLDER]">
+            <input type="hidden" name="current_step" id="current-step" value="1">
+            <input type="hidden" name="incident_type_id" id="incident-type-id" value="">
+            <input type="hidden" name="severity" id="severity-level" value="">
+            <input type="hidden" name="transportation_mode" id="transport-mode-value" value="">
+
+
+            <section class="form-step-content" id="step-1" role="tabpanel" aria-labelledby="step-1-indicator">
+                <h2>Step 1: What type of incident was it?</h2>
+                <div class="form-group selection-grid" id="incident-type-selection">
+                    <div class="selection-item" data-id="1" data-name="Harassment" role="button" tabindex="0" aria-label="Harassment">
+                        🧍‍♀️ Harassment
+                    </div>
+                    <div class="selection-item" data-id="2" data-name="Theft" role="button" tabindex="0" aria-label="Theft or Robbery">
+                        👛 Theft/Robbery
+                    </div>
+                    <div class="selection-item" data-id="4" data-name="Assault" role="button" tabindex="0" aria-label="Assault or Violence">
+                        🥊 Assault/Violence
+                    </div>
+                    <div class="selection-item" data-id="5" data-name="Suspicious" role="button" tabindex="0" aria-label="Suspicious Activity">
+                        ❓ Suspicious Activity
+                    </div>
+                    <div class="selection-item" data-id="6" data-name="Infrastructure" role="button" tabindex="0" aria-label="Infrastructure Failure">
+                        🚧 Infrastructure Failure
+                    </div>
+                    <div class="selection-item" data-id="7" data-name="Other" role="button" tabindex="0" aria-label="Other Incident">
+                        ... Other
+                    </div>
+                </div>
+            </section>
+            
+            <section class="form-step-content" id="step-2" role="tabpanel" aria-labelledby="step-2-indicator" style="display: none;">
+                <h2>Step 2: Where and how did it happen?</h2>
+                <div class="form-group">
+                    <label for="transport-mode">Transportation Mode</label>
+                    <select id="transport-mode" name="transport-mode-select" required aria-required="true">
+                        <option value="">Select Mode...</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Train">Train</option>
+                        <option value="Subway">Subway</option>
+                        <option value="Taxi/RideShare">Taxi/RideShare</option>
+                        <option value="Walking">Walking</option>
+                        <option value="Cycling">Cycling</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="route-identifier">Route/Line/Vehicle ID (Optional)</label>
+                    <input type="text" id="route-identifier" name="route_identifier" placeholder="e.g., Route 42, A-Line, Car 305">
+                </div>
+                
+                <div class="form-group">
+                    <label>Incident Location</label>
+                    <div id="location-status" style="margin-bottom: 0.5rem; color: #6b7280;">
+                        📍 Manual Coordinates or Auto-Detect Required
+                    </div>
+                    <button type="button" class="btn btn-secondary" id="auto-locate-btn" style="width: 100%;">
+                        🌍 Auto-Detect My Current Location
+                    </button>
+                    <input type="number" id="latitude" name="latitude" placeholder="Latitude (e.g., 40.7128)" step="any" required aria-required="true" style="margin-top: 1rem;">
+                    <input type="number" id="longitude" name="longitude" placeholder="Longitude (e.g., -74.0060)" step="any" required aria-required="true" style="margin-top: 0.5rem;">
+                </div>
+            </section>
+
+            <section class="form-step-content" id="step-3" role="tabpanel" aria-labelledby="step-3-indicator" style="display: none;">
+                <h2>Step 3: Tell us what happened and how severe it was.</h2>
+                <div class="form-group">
+                    <label for="description">Detailed Description (This will be encrypted)</label>
+                    <textarea id="description" name="description" rows="5" maxlength="500" placeholder="Describe the incident, including what, when, and who (without names or PII)." required aria-required="true"></textarea>
+                    <small id="char-count" style="float: right; color: #6b7280;">500 characters remaining</small>
+                </div>
+
+                <div class="form-group">
+                    <label>When did the incident occur?</label>
+                    <input type="datetime-local" id="timestamp" name="timestamp" required aria-required="true">
+                </div>
+                
+                <div class="form-group">
+                    <label>Incident Severity</label>
+                    <div class="severity-options" id="severity-options">
+                        <div class="severity-item" data-severity="Low" role="button" tabindex="0">
+                            🟢 Low
+                        </div>
+                        <div class="severity-item" data-severity="Medium" role="button" tabindex="0">
+                            🟡 Medium
+                        </div>
+                        <div class="severity-item" data-severity="High" role="button" tabindex="0">
+                            🟠 High
+                        </div>
+                        <div class="severity-item" data-severity="Critical" role="button" tabindex="0" style="color: var(--color-danger);">
+                            🔴 Critical
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="form-step-content" id="step-4" role="tabpanel" aria-labelledby="step-4-indicator" style="display: none;">
+                <h2>Step 4: Review and Submit</h2>
+                <div style="border: 1px solid #ccc; padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1.5rem;" role="alert">
+                    <h3 style="margin-top: 0;">Summary of Report</h3>
+                    <p><strong>Type:</strong> <span id="review-type"></span></p>
+                    <p><strong>Mode:</strong> <span id="review-mode"></span></p>
+                    <p><strong>Location:</strong> <span id="review-location"></span></p>
+                    <p><strong>Severity:</strong> <span id="review-severity"></span></p>
+                    <p><strong>Time:</strong> <span id="review-timestamp"></span></p>
+                    <p style="font-weight: bold; margin-top: 1rem;">Description (Encrypted):</p>
+                    <p id="review-description" style="font-style: italic; white-space: pre-wrap;"></p>
+                </div>
+                <div id="form-submission-error" style="color: var(--color-danger); text-align: center; margin-bottom: 1rem; font-weight: bold; display: none;" role="alert"></div>
+            </section>
+
+            <section id="confirmation-screen" style="display: none;">
+                <h2>✅ Report Submitted!</h2>
+                <p>Thank you. Your anonymous report has been successfully recorded.</p>
+                <p style="font-weight: bold;">Your tracking ID is:</p>
+                <p id="tracking-id" style="font-size: 1.5rem; color: var(--color-primary);"></p>
+                <p>Please save this ID if you wish to track the status of your report later.</p>
+                <a href="index.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%; max-width: 300px;">Back to Home</a>
+            </section>
+
+            <div class="button-group" id="form-navigation">
+                <button type="button" class="btn btn-secondary" id="prev-step-btn" disabled>← Previous</button>
+                <button type="button" class="btn btn-primary" id="next-step-btn">Next →</button>
+                <button type="submit" class="btn btn-danger" id="submit-report-btn" style="display: none;">🚨 Submit Report</button>
+            </div>
+            
+        </form>
+    </main>
+
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/validation.js" defer></script>
+</body>
+</html>

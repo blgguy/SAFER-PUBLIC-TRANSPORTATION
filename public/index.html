@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SAFER PUBLIC TRANSPORTATION IN INDIA | By Aminu Muhammed BCA-DBMS</title>
+    
+    <meta name="description" content="Report transportation incidents anonymously and view real-time safety alerts in your area. Making public transit safer, together.">
+    <meta name="keywords" content="safety, transport, public transit, incident report, anonymous, alerts, bus, train, subway">
+    <link rel="canonical" href="[APP_BASE_URL]">
+
+    <meta property="og:title" content="Safe Transport System">
+    <meta property="og:description" content="Report incidents anonymously and view real-time safety alerts.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="[APP_BASE_URL]">
+    <meta property="og:image" content="[APP_BASE_URL]/assets/images/social-share.jpg"> 
+    
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/icon-192x192.png">
+
+    <style>
+        :root {
+            --color-primary: #2563eb;
+            --color-success: #16a34a;
+            --color-danger: #dc2626;
+            --color-text: #1f2937;
+            --color-bg: #ffffff;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 3rem;
+            --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body { font-family: var(--font-stack); margin: 0; padding: 0; color: var(--color-text); background-color: var(--color-bg); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-md); }
+        h1, h2, h3 { margin-top: 0; }
+        
+        /* CTA Button Styling */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--color-danger); /* Use Danger for the main action */
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            font-size: 1.125rem;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover { background-color: #ef4444; }
+
+        /* Mobile-First Layout Adjustments (basic) */
+        .grid-3 { display: grid; gap: var(--spacing-md); }
+        @media (min-width: 768px) {
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Accessibility: Skip to Content Link */
+        .skip-link { position: absolute; top: -40px; left: 0; background: var(--color-primary); color: white; padding: 8px; z-index: 1000; }
+        .skip-link:focus { top: 0; }
+    </style>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Safe Transport System",
+      "url": "[APP_BASE_URL]",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "[APP_BASE_URL]/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header role="banner" style="background-color: var(--color-primary); color: white; padding: 1rem 0;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="/" style="color: white; text-decoration: none; font-size: 1.5rem; font-weight: 700;">
+                Safe Transport 🛡️
+            </a>
+            <nav role="navigation">
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; gap: 1.5rem;">
+                    <li><a href="#alerts-map" style="color: white;">Alerts Map</a></li>
+                    <li><a href="report.html" style="color: white;">Report</a></li>
+                    <li><a href="help.html" style="color: white;">Help</a></li>
+                    <li><a href="admin/dashboard.html" style="color: white;">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        
+        <section id="hero" style="background-color: #f3f4f6; padding: 4rem 0 6rem; text-align: center;">
+            <div class="container">
+                <hgroup>
+                    <h1 style="font-size: 2.5rem; color: var(--color-primary);">Making Every Journey Safe.</h1>
+                    <p style="font-size: 1.25rem; max-width: 600px; margin: 1rem auto 2rem;">
+                        Your safety matters. Report incidents **anonymously** and get **real-time alerts** about dangers on your route.
+                    </p>
+                </hgroup>
+                <a href="report.html" class="cta-button" aria-label="Report an Incident: Starts a multi-step anonymous form.">
+                    🚨 Report an Incident Now
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.875rem;">Your report is kept completely confidential and anonymous.</p>
+            </div>
+        </section>
+
+        <section id="how-it-works" style="padding: var(--spacing-lg) 0;">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: var(--spacing-lg);">How It Works in 3 Simple Steps</h2>
+                <div class="grid-3">
+                    <article style="text-align: center; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 0.5rem;">
+                        <span style="font-size: 2rem; color: var(--color-primary);" role="img" aria-label="Step 1 Icon">✍️</span>
+                        <h3 style="color: var(--color-primary);">1. Submit Anonymously</h3>
+                        <p>Fill out our quick, four-step form detailing the incident and location. We capture zero personal data.</p>
+                    </article>
+                    <article style="text-align: center; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 0.5rem;">
+                        <span style="font-size: 2rem; color: var(--color-primary);" role="img" aria-label="Step 2 Icon">🔍</span>
+                        <h3 style="color: var(--color-primary);">2. Verify & Analyze</h3>
+                        <p>Authorities use the data to verify the report and identify dangerous hotspots for immediate action.</p>
+                    </article>
+                    <article style="text-align: center; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 0.5rem;">
+                        <span style="font-size: 2rem; color: var(--color-primary);" role="img" aria-label="Step 3 Icon">📢</span>
+                        <h3 style="color: var(--color-primary);">3. Alert the Community</h3>
+                        <p>Real-time safety alerts are pushed to users in the affected area, increasing public awareness.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" style="background-color: #f9fafb; padding: var(--spacing-lg) 0;">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: var(--spacing-lg);">Core Features</h2>
+                <div class="grid-3">
+                    <article>
+                        <h3 style="color: var(--color-success);">🔒 Anonymous Reporting</h3>
+                        <p>Your privacy is our priority. Reports are submitted using a cryptographically generated hash, ensuring no Personally Identifiable Information (PII) is ever collected or stored.</p>
+                    </article>
+                    <article>
+                        <h3 style="color: var(--color-primary);">🔔 Real-time Alerts</h3>
+                        <p>Stay informed. Receive instant, location-based safety notifications about verified incidents near you, powered by our live API.</p>
+                    </article>
+                    <article>
+                        <h3 style="color: var(--color-danger);">📊 Data Analytics for Authorities</h3>
+                        <p>We empower transit authorities with critical data visualizations to spot crime patterns, deploy resources efficiently, and measure the impact of safety initiatives.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <section id="statistics" style="padding: var(--spacing-lg) 0; text-align: center;">
+            <div class="container">
+                <h2 style="margin-bottom: var(--spacing-lg);">Our Impact</h2>
+                <div class="grid-3" style="font-size: 1.5rem; font-weight: bold;">
+                    <div style="padding: 1rem; color: var(--color-primary);">
+                        <p style="font-size: 3rem; margin: 0;">4,500+</p>
+                        <p>Incidents Reported</p>
+                    </div>
+                    <div style="padding: 1rem; color: var(--color-success);">
+                        <p style="font-size: 3rem; margin: 0;">24/7</p>
+                        <p>Real-time Coverage</p>
+                    </div>
+                    <div style="padding: 1rem; color: var(--color-danger);">
+                        <p style="font-size: 3rem; margin: 0;">15%</p>
+                        <p>Reduction in Hotspots</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="safety-tips" style="background-color: #f3f4f6; padding: var(--spacing-lg) 0;">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: var(--spacing-md);">Stay Safe: Essential Tips</h2>
+                <ul style="list-style: none; padding: 0; max-width: 800px; margin: 0 auto; text-align: left;">
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">🚶‍♂️ Be aware of your surroundings, especially when using your phone.</li>
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb;">💡 Travel in well-lit, populated areas and routes whenever possible.</li>
+                    <li style="padding: 0.5rem 0;">📞 Always have an emergency contact easily accessible on your phone.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo" style="background-color: var(--color-text); color: #f9fafb; padding: var(--spacing-lg) 0; font-size: 0.9rem;">
+        <div class="container">
+            <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 0.5rem;">About Us</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="public/help.html#privacy" style="color: #9ca3af;">Privacy Policy</a></li>
+                        <li><a href="public/help.html#terms" style="color: #9ca3af;">Terms of Service</a></li>
+                        <li><a href="public/help.html" style="color: #9ca3af;">FAQ & Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 0.5rem;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="report.html" style="color: #9ca3af;">Submit a Report</a></li>
+                        <li><a href="admin/dashboard.html" style="color: #9ca3af;">Authority Login</a></li>
+                        <li><a href="#alerts-map" style="color: #9ca3af;">View Alerts Map</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 0.5rem;">Contact</h4>
+                    <address style="font-style: normal;">
+                        Email: <a href="mailto:support@safetransport.com" style="color: #9ca3af;">support@safetransport.com</a><br>
+                        Address: [Agency Name], [City, State]
+                    </address>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: var(--spacing-md); border-top: 1px solid #4b5563; padding-top: 1rem;">
+                &copy; 2025 Safe Transport System. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

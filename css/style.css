@@ -1,0 +1,383 @@
+/**
+ * Main Stylesheet for Safe Transport
+ * Clean, mobile-friendly CSS
+ * File: css/style.css
+ */
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f8f9fa;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p { margin-bottom: 1rem; }
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0052a3;
+}
+
+/* ============================================
+   COLOR SYSTEM
+   ============================================ */
+:root {
+    --primary: #0066cc;
+    --primary-dark: #0052a3;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #17a2b8;
+    --light: #f8f9fa;
+    --dark: #333333;
+    --gray: #6c757d;
+    --border: #dee2e6;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.btn-secondary {
+    background: var(--gray);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #545b62;
+}
+
+.btn-success {
+    background: var(--success);
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   CARDS & BOXES
+   ============================================ */
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+}
+
+.card-body {
+    line-height: 1.6;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th {
+    background: var(--primary);
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+tr:hover {
+    background: var(--light);
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.badge-success {
+    background: var(--success);
+    color: white;
+}
+
+.badge-warning {
+    background: var(--warning);
+    color: #333;
+}
+
+.badge-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.badge-info {
+    background: var(--info);
+    color: white;
+}
+
+/* ============================================
+   ALERTS & MESSAGES
+   ============================================ */
+.alert {
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border-left-color: var(--success);
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border-left-color: var(--danger);
+}
+
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border-left-color: var(--warning);
+}
+
+.alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border-left-color: var(--info);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-30 { margin-bottom: 30px; }
+
+.p-10 { padding: 10px; }
+.p-20 { padding: 20px; }
+.p-30 { padding: 30px; }
+
+.d-block { display: block; }
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-flex { display: flex; }
+.d-none { display: none; }
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gap-10 { gap: 10px; }
+.gap-20 { gap: 20px; }
+
+/* ============================================
+   RESPONSIVE GRID
+   ============================================ */
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 1.5rem; }
+    
+    .btn {
+        width: 100%;
+        padding: 12px;
+    }
+    
+    input,
+    select,
+    textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
