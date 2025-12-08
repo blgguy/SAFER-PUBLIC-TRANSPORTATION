@@ -18,7 +18,7 @@ define('LOG_FILE_PATH', __DIR__ . '/../logs/app.log');
 // Key for Geocoding/Mapping services (e.g., Google Maps, OpenCage)
 define('MAPS_API_KEY', getenv('MAPS_API_KEY') ?: 'API Key'); 
 // Key for external Email sending service (e.g., SendGrid, Mailgun)
-define('EMAIL_API_KEY', getenv('EMAIL_API_KEY') ?: '');
+define('EMAIL_API_KEY', getenv('EMAIL_API_KEY') ?: 'API Key');
 
 // --- 4. Email Settings ---
 define('EMAIL_FROM_ADDRESS', 'no-reply@example.com');
@@ -44,3 +44,4 @@ return [
     'rate_limit' => ['reports' => API_RATE_LIMIT_REPORTS, 'time' => API_RATE_LIMIT_TIME]
 
 ];
+
